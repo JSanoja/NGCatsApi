@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="col-4" *ngFor="let item of catalog">
+    <div class="card" style="width: 18rem">
+      <img
+        src="{{
+          item.image && item.image.url
+            ? item.image.url
+            : '/assets/image-not-found.jpg'
+        }}"
+        class="card-img-top"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ item.name }}</h5>
+        <p class="card-text">{{ item.description }}</p>
+        <a href="{{ item.cfa_url }}" class="btn btn-primary">See the cat</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <nav class="pagination-container" aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item">
+          <button
+            class="page-link btn btn-primary"
+            (click)="goToPrevious()"
+            [disabled]="page == 0"
+          >
+            Previous
+          </button>
+        </li>
+        <li class="page-item">
+          <button
+            class="page-link btn btn-primary"
+            href="#"
+            (click)="goToNext()"
+          >
+            Next
+          </button>
+        </li>
+        <li class="limit">
+          <select
+            class="form-select"
+            aria-label="Default select example"
+            (change)="limitChange($event)"
+          >
+            <option value="10" selected>10</option>
+            <option value="20">20</option>
+            <option value="30">30</option>
+          </select>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
